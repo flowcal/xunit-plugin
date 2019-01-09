@@ -50,7 +50,7 @@ public class XUnitWorkflowTest {
         WorkflowJob job = getBaseJob("builder");
         job.setDefinition(new CpsFlowDefinition(""
                 + "node {\n"
-                + "  step([$class: 'XUnitBuilderLegacy', testTimeMargin: '3000', thresholdMode: 1, thresholds: [[$class: 'FailedThreshold', failureNewThreshold: '', failureThreshold: '', unstableNewThreshold: '', unstableThreshold: '1'], [$class: 'SkippedThreshold', failureNewThreshold: '', failureThreshold: '', unstableNewThreshold: '', unstableThreshold: '']], tools: [[$class: 'GoogleTestType', deleteOutputFiles: false, failIfNotNew: false, pattern: 'input.xml', skipNoTestFiles: false, stopProcessingIfError: true]]])\n"
+                + "  step([$class: 'XUnitBuilderLegacy', testTimeMargin: '3000', thresholdMode: 1, thresholds: [[$class: 'FailedThresholdLegacy', failureNewThreshold: '', failureThreshold: '', unstableNewThreshold: '', unstableThreshold: '1'], [$class: 'SkippedThresholdLegacy', failureNewThreshold: '', failureThreshold: '', unstableNewThreshold: '', unstableThreshold: '']], tools: [[$class: 'GoogleTestType', deleteOutputFiles: false, failIfNotNew: false, pattern: 'input.xml', skipNoTestFiles: false, stopProcessingIfError: true]]])\n"
                 + "}"));
 
         jenkinsRule.assertBuildStatus(Result.UNSTABLE, job.scheduleBuild2(0).get());
@@ -61,7 +61,7 @@ public class XUnitWorkflowTest {
         WorkflowJob job = getBaseJob("publisher");
         job.setDefinition(new CpsFlowDefinition(""
                 + "node {\n"
-                + "  step([$class: 'XUnitPublisherLegacy', testTimeMargin: '3000', thresholdMode: 1, thresholds: [[$class: 'FailedThreshold', failureNewThreshold: '', failureThreshold: '', unstableNewThreshold: '', unstableThreshold: '1'], [$class: 'SkippedThreshold', failureNewThreshold: '', failureThreshold: '', unstableNewThreshold: '', unstableThreshold: '']], tools: [[$class: 'GoogleTestType', deleteOutputFiles: false, failIfNotNew: false, pattern: 'input.xml', skipNoTestFiles: false, stopProcessingIfError: true]]])\n"
+                + "  step([$class: 'XUnitPublisherLegacy', testTimeMargin: '3000', thresholdMode: 1, thresholds: [[$class: 'FailedThresholdLegacy', failureNewThreshold: '', failureThreshold: '', unstableNewThreshold: '', unstableThreshold: '1'], [$class: 'SkippedThresholdLegacy', failureNewThreshold: '', failureThreshold: '', unstableNewThreshold: '', unstableThreshold: '']], tools: [[$class: 'GoogleTestType', deleteOutputFiles: false, failIfNotNew: false, pattern: 'input.xml', skipNoTestFiles: false, stopProcessingIfError: true]]])\n"
                 + "}"));
 
         jenkinsRule.assertBuildStatus(Result.UNSTABLE, job.scheduleBuild2(0).get());

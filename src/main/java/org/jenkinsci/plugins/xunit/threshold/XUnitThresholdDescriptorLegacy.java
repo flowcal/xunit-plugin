@@ -31,15 +31,15 @@ import hudson.model.Hudson;
 /**
  * @author Gregory Boissinot
  */
-public abstract class XUnitThresholdDescriptorLegacy<T extends XUnitThreshold> extends Descriptor<XUnitThreshold> {
+public abstract class XUnitThresholdDescriptorLegacy<T extends XUnitThresholdLegacy> extends Descriptor<XUnitThresholdLegacy> {
 
-    public XUnitThresholdDescriptorLegacy(Class<? extends XUnitThreshold> clazz) {
+    public XUnitThresholdDescriptorLegacy(Class<? extends XUnitThresholdLegacy> clazz) {
         super(clazz);
     }
 
     @SuppressWarnings("unused")
-    public static DescriptorExtensionList<XUnitThreshold, XUnitThresholdDescriptorLegacy<?>> all() {
-        return Hudson.getInstance().getDescriptorList(XUnitThreshold.class);
+    public static DescriptorExtensionList<XUnitThresholdLegacy, XUnitThresholdDescriptorLegacy<?>> all() {
+        return Hudson.getInstance().getDescriptorList(XUnitThresholdLegacy.class);
     }
 
     @SuppressWarnings("unused")

@@ -33,13 +33,13 @@ import org.kohsuke.stapler.DataBoundConstructor;
 /**
  * @author Gregory Boissinot
  */
-public class FailedThreshold extends XUnitThreshold {
+public class FailedThresholdLegacy extends XUnitThresholdLegacy {
 
-    public FailedThreshold() {
+    public FailedThresholdLegacy() {
     }
 
     @DataBoundConstructor
-    public FailedThreshold(String unstableThreshold, String unstableNewThreshold, String failureThreshold, String failureNewThreshold) {
+    public FailedThresholdLegacy(String unstableThreshold, String unstableNewThreshold, String failureThreshold, String failureNewThreshold) {
         super(unstableThreshold, unstableNewThreshold, failureThreshold, failureNewThreshold);
     }
 

@@ -44,7 +44,7 @@ import org.jenkinsci.lib.dtkit.model.InputMetric;
 import org.jenkinsci.lib.dtkit.type.TestType;
 import org.jenkinsci.plugins.xunit.exception.XUnitException;
 import org.jenkinsci.plugins.xunit.service.*;
-import org.jenkinsci.plugins.xunit.threshold.XUnitThreshold;
+import org.jenkinsci.plugins.xunit.threshold.XUnitThresholdLegacy;
 import org.jenkinsci.plugins.xunit.types.CustomType;
 
 import java.io.File;
@@ -57,11 +57,11 @@ import java.io.Serializable;
 public class XUnitProcessor implements Serializable {
     private static final long serialVersionUID = 1L;
     private TestType[] types;
-    private XUnitThreshold[] thresholds;
+    private XUnitThresholdLegacy[] thresholds;
     private int thresholdMode;
     private ExtraConfiguration extraConfiguration;
 
-    public XUnitProcessor(TestType[] types, XUnitThreshold[] thresholds, int thresholdMode, ExtraConfiguration extraConfiguration) {
+    public XUnitProcessor(TestType[] types, XUnitThresholdLegacy[] thresholds, int thresholdMode, ExtraConfiguration extraConfiguration) {
         this.types = types;
         if (types == null) {
             throw new NullPointerException("The types section is required.");
@@ -391,7 +391,7 @@ public class XUnitProcessor implements Serializable {
                                           TestResultAction previousTestResultAction) {
 
         if (thresholds != null) {
-            for (XUnitThreshold threshold : thresholds) {
+            for (XUnitThresholdLegacy threshold : thresholds) {
                 log.infoConsoleLogger(String.format("Check '%s' threshold.", threshold.getDescriptor().getDisplayName()));
                 Result result;
                 if (XUnitDefaultValues.MODE_PERCENT == thresholdMode) {

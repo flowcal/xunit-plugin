@@ -45,10 +45,9 @@ import jenkins.tasks.SimpleBuildStep;
 import org.jenkinsci.lib.dryrun.DryRun;
 import org.jenkinsci.lib.dtkit.descriptor.TestTypeDescriptor;
 import org.jenkinsci.lib.dtkit.type.TestType;
-import org.jenkinsci.plugins.xunit.threshold.FailedThreshold;
-import org.jenkinsci.plugins.xunit.threshold.SkippedThreshold;
-import org.jenkinsci.plugins.xunit.threshold.XUnitThreshold;
-import org.jenkinsci.plugins.xunit.threshold.XUnitThresholdDescriptorLegacy;
+import org.jenkinsci.plugins.xunit.threshold.*;
+import org.jenkinsci.plugins.xunit.threshold.FailedThresholdLegacy;
+import org.jenkinsci.plugins.xunit.threshold.XUnitThresholdLegacy;
 import org.kohsuke.stapler.DataBoundConstructor;
 
 import java.io.IOException;
@@ -63,18 +62,18 @@ import java.io.Serializable;
 public class XUnitPublisherLegacy extends Recorder implements DryRun, Serializable, SimpleBuildStep {
 
     private TestType[] types;
-    private XUnitThreshold[] thresholds;
+    private XUnitThresholdLegacy[] thresholds;
     private int thresholdMode;
     private ExtraConfiguration extraConfiguration;
 
-    public XUnitPublisherLegacy(TestType[] types, XUnitThreshold[] thresholds) {
+    public XUnitPublisherLegacy(TestType[] types, XUnitThresholdLegacy[] thresholds) {
         this.types = types;
         this.thresholds = thresholds;
         this.thresholdMode = 1;
     }
 
     @DataBoundConstructor
-    public XUnitPublisherLegacy(TestType[] tools, XUnitThreshold[] thresholds, int thresholdMode, String testTimeMargin) {
+    public XUnitPublisherLegacy(TestType[] tools, XUnitThresholdLegacy[] thresholds, int thresholdMode, String testTimeMargin) {
         this.types = tools;
         this.thresholds = thresholds;
         this.thresholdMode = thresholdMode;
@@ -103,7 +102,7 @@ public class XUnitPublisherLegacy extends Recorder implements DryRun, Serializab
         return types;
     }
 
-    public XUnitThreshold[] getThresholds() {
+    public XUnitThresholdLegacy[] getThresholds() {
         return thresholds;
     }
 
@@ -188,14 +187,14 @@ public class XUnitPublisherLegacy extends Recorder implements DryRun, Serializab
             return TestTypeDescriptor.all();
         }
 
-        public DescriptorExtensionList<XUnitThreshold, XUnitThresholdDescriptorLegacy<?>> getListXUnitThresholdDescriptors() {
+        public DescriptorExtensionList<XUnitThresholdLegacy, XUnitThresholdDescriptorLegacy<?>> getListXUnitThresholdDescriptors() {
             return XUnitThresholdDescriptorLegacy.all();
         }
 
-        public XUnitThreshold[] getListXUnitThresholdInstance() {
-            return new XUnitThreshold[]{
-                    new FailedThreshold(),
-                    new SkippedThreshold()
+        public XUnitThresholdLegacy[] getListXUnitThresholdInstance() {
+            return new XUnitThresholdLegacy[]{
+                    new FailedThresholdLegacy(),
+                    new SkippedThresholdLegacy()
             };
         }
 

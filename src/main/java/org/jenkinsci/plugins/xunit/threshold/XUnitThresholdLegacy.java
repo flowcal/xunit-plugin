@@ -39,7 +39,7 @@ import java.io.Serializable;
 /**
  * @author Gregory Boissinot
  */
-public abstract class XUnitThreshold implements ExtensionPoint, Serializable, Describable<XUnitThreshold> {
+public abstract class XUnitThresholdLegacy implements ExtensionPoint, Serializable, Describable<XUnitThresholdLegacy> {
 
     private String unstableThreshold;
 
@@ -49,23 +49,23 @@ public abstract class XUnitThreshold implements ExtensionPoint, Serializable, De
 
     private String failureNewThreshold;
 
-    protected XUnitThreshold() {
+    protected XUnitThresholdLegacy() {
     }
 
-    public XUnitThreshold(String unstableThreshold, String unstableNewThreshold, String failureThreshold, String failureNewThreshold) {
+    public XUnitThresholdLegacy(String unstableThreshold, String unstableNewThreshold, String failureThreshold, String failureNewThreshold) {
         this.unstableThreshold = unstableThreshold;
         this.unstableNewThreshold = unstableNewThreshold;
         this.failureThreshold = failureThreshold;
         this.failureNewThreshold = failureNewThreshold;
     }
 
-    public Descriptor<XUnitThreshold> getDescriptor() {
-        return (XUnitThresholdDescriptorLegacy<? extends XUnitThreshold>) Hudson.getInstance().getDescriptor(getClass());
+    public Descriptor<XUnitThresholdLegacy> getDescriptor() {
+        return (XUnitThresholdDescriptorLegacy<? extends XUnitThresholdLegacy>) Hudson.getInstance().getDescriptor(getClass());
     }
 
     @SuppressWarnings("unused")
-    public static DescriptorExtensionList<XUnitThreshold, XUnitThresholdDescriptorLegacy<?>> all() {
-        return Hudson.getInstance().<XUnitThreshold, XUnitThresholdDescriptorLegacy<?>>getDescriptorList(XUnitThreshold.class);
+    public static DescriptorExtensionList<XUnitThresholdLegacy, XUnitThresholdDescriptorLegacy<?>> all() {
+        return Hudson.getInstance().<XUnitThresholdLegacy, XUnitThresholdDescriptorLegacy<?>>getDescriptorList(XUnitThresholdLegacy.class);
     }
 
     public String getUnstableThreshold() {
