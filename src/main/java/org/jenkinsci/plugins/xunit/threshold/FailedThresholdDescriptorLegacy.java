@@ -24,37 +24,49 @@
 
 package org.jenkinsci.plugins.xunit.threshold;
 
-import hudson.DescriptorExtensionList;
-import hudson.model.Descriptor;
-import hudson.model.Hudson;
+import hudson.Extension;
 
 /**
  * @author Gregory Boissinot
  */
-public abstract class XUnitThresholdDescriptor<T extends XUnitThreshold> extends Descriptor<XUnitThreshold> {
+@Extension
+public class FailedThresholdDescriptorLegacy extends XUnitThresholdDescriptorLegacy<FailedThreshold> {
 
-    public XUnitThresholdDescriptor(Class<? extends XUnitThreshold> clazz) {
+    public FailedThresholdDescriptorLegacy() {
+        super(FailedThreshold.class);
+    }
+
+    public FailedThresholdDescriptorLegacy(Class<? extends XUnitThreshold> clazz) {
         super(clazz);
     }
 
-    @SuppressWarnings("unused")
-    public static DescriptorExtensionList<XUnitThreshold, XUnitThresholdDescriptor<?>> all() {
-        return Hudson.getInstance().getDescriptorList(XUnitThreshold.class);
+    @Override
+    public String getDisplayName() {
+        return Messages.displayName_failedTests();
     }
 
-    @SuppressWarnings("unused")
-    public abstract String getUnstableThresholdImgTitle();
+    @Override
+    public String getUnstableThresholdImgTitle() {
+        return Messages.unstableThreshold_failedTests();
+    }
 
-    @SuppressWarnings("unused")
-    public abstract String getUnstableNewThresholdImgTitle();
+    @Override
+    public String getUnstableNewThresholdImgTitle() {
+        return Messages.failureNewThreshold_failedTests();
+    }
 
-    @SuppressWarnings("unused")
-    public abstract String getFailureThresholdImgTitle();
+    @Override
+    public String getFailureThresholdImgTitle() {
+        return Messages.failureThreshold_failedTests();
+    }
 
-    @SuppressWarnings("unused")
-    public abstract String getFailureNewThresholdImgTitle();
+    @Override
+    public String getFailureNewThresholdImgTitle() {
+        return Messages.failureNewThreshold_failedTests();
+    }
 
-    @SuppressWarnings("unused")
-    public abstract String getThresholdHelpMessage();
-
+    @Override
+    public String getThresholdHelpMessage() {
+        return Messages.thresholdHelpMessage_failedTests();
+    }
 }

@@ -60,12 +60,12 @@ public abstract class XUnitThreshold implements ExtensionPoint, Serializable, De
     }
 
     public Descriptor<XUnitThreshold> getDescriptor() {
-        return (XUnitThresholdDescriptor<? extends XUnitThreshold>) Hudson.getInstance().getDescriptor(getClass());
+        return (XUnitThresholdDescriptorLegacy<? extends XUnitThreshold>) Hudson.getInstance().getDescriptor(getClass());
     }
 
     @SuppressWarnings("unused")
-    public static DescriptorExtensionList<XUnitThreshold, XUnitThresholdDescriptor<?>> all() {
-        return Hudson.getInstance().<XUnitThreshold, XUnitThresholdDescriptor<?>>getDescriptorList(XUnitThreshold.class);
+    public static DescriptorExtensionList<XUnitThreshold, XUnitThresholdDescriptorLegacy<?>> all() {
+        return Hudson.getInstance().<XUnitThreshold, XUnitThresholdDescriptorLegacy<?>>getDescriptorList(XUnitThreshold.class);
     }
 
     public String getUnstableThreshold() {

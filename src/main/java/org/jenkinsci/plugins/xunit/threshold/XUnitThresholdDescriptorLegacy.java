@@ -24,49 +24,37 @@
 
 package org.jenkinsci.plugins.xunit.threshold;
 
-import hudson.Extension;
+import hudson.DescriptorExtensionList;
+import hudson.model.Descriptor;
+import hudson.model.Hudson;
 
 /**
  * @author Gregory Boissinot
  */
-@Extension
-public class FailedThresholdDescriptor extends XUnitThresholdDescriptor<FailedThreshold> {
+public abstract class XUnitThresholdDescriptorLegacy<T extends XUnitThreshold> extends Descriptor<XUnitThreshold> {
 
-    public FailedThresholdDescriptor() {
-        super(FailedThreshold.class);
-    }
-
-    public FailedThresholdDescriptor(Class<? extends XUnitThreshold> clazz) {
+    public XUnitThresholdDescriptorLegacy(Class<? extends XUnitThreshold> clazz) {
         super(clazz);
     }
 
-    @Override
-    public String getDisplayName() {
-        return Messages.displayName_failedTests();
+    @SuppressWarnings("unused")
+    public static DescriptorExtensionList<XUnitThreshold, XUnitThresholdDescriptorLegacy<?>> all() {
+        return Hudson.getInstance().getDescriptorList(XUnitThreshold.class);
     }
 
-    @Override
-    public String getUnstableThresholdImgTitle() {
-        return Messages.unstableThreshold_failedTests();
-    }
+    @SuppressWarnings("unused")
+    public abstract String getUnstableThresholdImgTitle();
 
-    @Override
-    public String getUnstableNewThresholdImgTitle() {
-        return Messages.failureNewThreshold_failedTests();
-    }
+    @SuppressWarnings("unused")
+    public abstract String getUnstableNewThresholdImgTitle();
 
-    @Override
-    public String getFailureThresholdImgTitle() {
-        return Messages.failureThreshold_failedTests();
-    }
+    @SuppressWarnings("unused")
+    public abstract String getFailureThresholdImgTitle();
 
-    @Override
-    public String getFailureNewThresholdImgTitle() {
-        return Messages.failureNewThreshold_failedTests();
-    }
+    @SuppressWarnings("unused")
+    public abstract String getFailureNewThresholdImgTitle();
 
-    @Override
-    public String getThresholdHelpMessage() {
-        return Messages.thresholdHelpMessage_failedTests();
-    }
+    @SuppressWarnings("unused")
+    public abstract String getThresholdHelpMessage();
+
 }

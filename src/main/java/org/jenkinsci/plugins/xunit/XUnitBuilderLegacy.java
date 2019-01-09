@@ -42,7 +42,7 @@ import org.jenkinsci.lib.dtkit.type.TestType;
 import org.jenkinsci.plugins.xunit.threshold.FailedThreshold;
 import org.jenkinsci.plugins.xunit.threshold.SkippedThreshold;
 import org.jenkinsci.plugins.xunit.threshold.XUnitThreshold;
-import org.jenkinsci.plugins.xunit.threshold.XUnitThresholdDescriptor;
+import org.jenkinsci.plugins.xunit.threshold.XUnitThresholdDescriptorLegacy;
 import org.kohsuke.stapler.DataBoundConstructor;
 
 import java.io.IOException;
@@ -173,8 +173,8 @@ public class XUnitBuilderLegacy extends Builder implements SimpleBuildStep {
             return TestTypeDescriptor.all();
         }
 
-        public DescriptorExtensionList<XUnitThreshold, XUnitThresholdDescriptor<?>> getListXUnitThresholdDescriptors() {
-            return XUnitThresholdDescriptor.all();
+        public DescriptorExtensionList<XUnitThreshold, XUnitThresholdDescriptorLegacy<?>> getListXUnitThresholdDescriptors() {
+            return XUnitThresholdDescriptorLegacy.all();
         }
 
         public XUnitThreshold[] getListXUnitThresholdInstance() {

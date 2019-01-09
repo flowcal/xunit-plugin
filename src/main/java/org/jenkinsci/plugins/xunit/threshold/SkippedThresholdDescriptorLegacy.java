@@ -30,13 +30,13 @@ import hudson.Extension;
  * @author Gregory Boissinot
  */
 @Extension
-public class SkippedThresholdDescriptor extends XUnitThresholdDescriptor<SkippedThreshold> {
+public class SkippedThresholdDescriptorLegacy extends XUnitThresholdDescriptorLegacy<SkippedThreshold> {
 
-    public SkippedThresholdDescriptor() {
+    public SkippedThresholdDescriptorLegacy() {
         super(SkippedThreshold.class);
     }
 
-    public SkippedThresholdDescriptor(Class<? extends XUnitThreshold> clazz) {
+    public SkippedThresholdDescriptorLegacy(Class<? extends XUnitThreshold> clazz) {
         super(clazz);
     }
 
