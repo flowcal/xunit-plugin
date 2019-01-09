@@ -60,21 +60,21 @@ import java.io.Serializable;
  * @author Gregory Boissinot
  */
 @SuppressWarnings({"unchecked", "unused"})
-public class XUnitPublisher extends Recorder implements DryRun, Serializable, SimpleBuildStep {
+public class XUnitPublisherLegacy extends Recorder implements DryRun, Serializable, SimpleBuildStep {
 
     private TestType[] types;
     private XUnitThreshold[] thresholds;
     private int thresholdMode;
     private ExtraConfiguration extraConfiguration;
 
-    public XUnitPublisher(TestType[] types, XUnitThreshold[] thresholds) {
+    public XUnitPublisherLegacy(TestType[] types, XUnitThreshold[] thresholds) {
         this.types = types;
         this.thresholds = thresholds;
         this.thresholdMode = 1;
     }
 
     @DataBoundConstructor
-    public XUnitPublisher(TestType[] tools, XUnitThreshold[] thresholds, int thresholdMode, String testTimeMargin) {
+    public XUnitPublisherLegacy(TestType[] tools, XUnitThreshold[] thresholds, int thresholdMode, String testTimeMargin) {
         this.types = tools;
         this.thresholds = thresholds;
         this.thresholdMode = thresholdMode;
@@ -165,7 +165,7 @@ public class XUnitPublisher extends Recorder implements DryRun, Serializable, Si
     public static final class XUnitDescriptorPublisher extends BuildStepDescriptor<Publisher> {
 
         public XUnitDescriptorPublisher() {
-            super(XUnitPublisher.class);
+            super(XUnitPublisherLegacy.class);
             load();
         }
 
