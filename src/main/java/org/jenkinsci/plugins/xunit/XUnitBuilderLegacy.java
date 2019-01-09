@@ -50,7 +50,7 @@ import java.io.IOException;
 /**
  * @author Gregory Boissinot
  */
-public class XUnitBuilder extends Builder implements SimpleBuildStep {
+public class XUnitBuilderLegacy extends Builder implements SimpleBuildStep {
 
     private TestType[] types;
     private XUnitThreshold[] thresholds;
@@ -62,14 +62,14 @@ public class XUnitBuilder extends Builder implements SimpleBuildStep {
      */
     private XUnitProcessor xUnitProcessor;
 
-    public XUnitBuilder(TestType[] types, XUnitThreshold[] thresholds) {
+    public XUnitBuilderLegacy(TestType[] types, XUnitThreshold[] thresholds) {
         this.types = types;
         this.thresholds = thresholds;
         this.thresholdMode = 1;
     }
 
     @DataBoundConstructor
-    public XUnitBuilder(TestType[] tools, XUnitThreshold[] thresholds, int thresholdMode, String testTimeMargin) {
+    public XUnitBuilderLegacy(TestType[] tools, XUnitThreshold[] thresholds, int thresholdMode, String testTimeMargin) {
         this.types = tools;
         this.thresholds = thresholds;
         this.thresholdMode = thresholdMode;
@@ -150,7 +150,7 @@ public class XUnitBuilder extends Builder implements SimpleBuildStep {
     public static final class XUnitDescriptorBuilder extends BuildStepDescriptor<Builder> {
 
         public XUnitDescriptorBuilder() {
-            super(XUnitBuilder.class);
+            super(XUnitBuilderLegacy.class);
             load();
         }
 
