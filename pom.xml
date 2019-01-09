@@ -7,10 +7,10 @@
         <version>1.596.1</version>
     </parent>
 
-    <artifactId>xunit</artifactId>
+    <artifactId>xunitLegacy</artifactId>
     <version>1.102</version>
     <packaging>hpi</packaging>
-    <name>xUnit plugin</name>
+    <name>xUnit Legacy plugin</name>
     <url>http://wiki.jenkins-ci.org/display/JENKINS/xUnit+Plugin</url>
 
     <licenses>
