@@ -29,18 +29,18 @@ import org.jenkinsci.lib.dtkit.descriptor.TestTypeDescriptor;
 import org.jenkinsci.lib.dtkit.type.TestType;
 import org.kohsuke.stapler.DataBoundConstructor;
 
-public class NUnitJunitHudsonTestType extends TestType {
+public class NUnitJunitHudsonTestTypeLegacy extends TestType {
 
     @DataBoundConstructor
-    public NUnitJunitHudsonTestType(String pattern, boolean skipNoTestFiles, boolean failIfNotNew, boolean deleteOutputFiles, boolean stopProcessingIfError) {
+    public NUnitJunitHudsonTestTypeLegacy(String pattern, boolean skipNoTestFiles, boolean failIfNotNew, boolean deleteOutputFiles, boolean stopProcessingIfError) {
         super(pattern, skipNoTestFiles, failIfNotNew, deleteOutputFiles, stopProcessingIfError);
     }
 
     @Extension
-    public static class DescriptorImpl extends TestTypeDescriptor<NUnitJunitHudsonTestType> {
+    public static class DescriptorImpl extends TestTypeDescriptor<NUnitJunitHudsonTestTypeLegacy> {
 
         public DescriptorImpl() {
-            super(NUnitJunitHudsonTestType.class, NUnit.class);
+            super(NUnitJunitHudsonTestTypeLegacy.class, NUnit.class);
         }
 
     }
